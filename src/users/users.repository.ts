@@ -24,6 +24,8 @@ export class UserRepository {
     user: Partial<User>,
   ): Promise<User> {
     this.logger.log(userFilterQuery, user);
-    return this.userModel.findOneAndUpdate(userFilterQuery, user);
+    return this.userModel.findOneAndUpdate(userFilterQuery, user, {
+      new: true,
+    });
   }
 }
